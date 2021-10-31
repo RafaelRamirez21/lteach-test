@@ -8,13 +8,20 @@ namespace Test1_CSharp
     {
         static void Main(string[] args)
         {
-            playTaskOne();
-            playTaskTwo();
+            // playTaskOne();
+            // playTaskTwo();
+            playTaskThree();
+        }
+
+        private static void playTaskThree()
+        {
+            throw new NotImplementedException();
         }
 
         private static void playTaskTwo()
         {
-            throw new NotImplementedException();
+            var taskTwo=new TaskTwo(4);
+            taskTwo.findNumber();
         }
 
         private static void playTaskOne()
