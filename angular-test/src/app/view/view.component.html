@@ -1,0 +1,23 @@
+<div class="layout-views-app">
+  <h2 class="section_title">Your Cities</h2>
+  <div class="container-dropdown">
+    <form (submit)="submitCity(cityName)">
+      <div class="container-search-nav">
+        <input type="text" class="view-search__input" placeholder="City" #cityName>
+        <button class="view-search__btn">
+          <img class="search-icon" src="../../assets//icons/Lupatest.svg" alt="lupatest">
+        </button>
+      </div>
+
+      <div class="view-search__cities">
+        <ul class="view-search__dropdown">
+          <li class="view-search__dropdown-items" *ngFor="let city of cities" (click)="submitDropdown(city.name)">
+            {{city.name}}</li>
+        </ul>
+
+      </div>
+
+    </form>
+  </div>
+
+</div>

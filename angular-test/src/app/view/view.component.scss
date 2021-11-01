@@ -1,0 +1,80 @@
+.layout-views-app{
+  height: 100vh;
+  width: 100vw;
+ padding-left: 25px;
+  background: rgb(238,240,246);
+}
+.container-dropdown{
+  width:278px ;
+  height: 140px;
+  border-radius: 10px;
+  background: white;
+  box-shadow: 0px 25px 40px #fafafaa1;
+}
+.section_title{
+  padding: 30px 0; 
+  color: #ec553d;;
+}
+.view-search{
+  &__input{
+    width: 85%;
+    height: 35px;
+    font-size: 18px;    
+    border: 0;
+    outline: none;
+    border-radius: 5px;
+    padding-left: 9px;
+
+  }
+  &__btn{
+    display: block;
+    width: 40px;
+    height: 20px;
+    background: none;
+    border: none;
+    margin-top: 5px;
+    cursor: pointer;
+  }
+  &__cities{
+    overflow-y: auto;
+    width:272px ;
+    height: 90px;
+
+  }
+  &__dropdown{
+    text-decoration: none;
+    list-style: none;
+    margin-left:15px ;
+    font-size: 16px;
+    text-transform: capitalize;
+    &-items{
+      margin: 2px 0;
+      cursor: pointer;
+    }
+  }
+}
+
+.container-search-nav{
+  display: flex;
+}
+.search-icon{
+  margin: auto;
+  width: 18px;
+  justify-self: center;
+  align-self: center;
+  
+}
+.view-search__cities::-webkit-scrollbar {
+  width: 3px;
+  height: 7px;
+ 
+}
+.view-search__cities::-webkit-scrollbar-thumb {
+  background: #ec553d;
+  border-radius: 20px;
+  
+}
+.view-search__cities::-webkit-scrollbar-thumb:hover {
+  background: #b3b3b3;
+  
+}
