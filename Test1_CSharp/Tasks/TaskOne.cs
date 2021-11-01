@@ -9,7 +9,7 @@ namespace Test1_CSharp.Tasks
         public int InputY { get; set; }// multiply by y
         public int InputRange { get; set; }//range 0 to n
         //Constructor
-        public TaskOne(int InputX, int InputY, int InputRange)
+        public TaskOne(int InputX=3, int InputY=5, int InputRange=15)
         {
             this.InputX = InputX;
             this.InputY = InputY;
