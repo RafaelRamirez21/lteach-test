@@ -20,4 +20,18 @@
     </form>
   </div>
 
+  <div *ngIf="" class="container-card__weather">
+    <p>Name:{{weather?.name}},{{country}}</p>
+    <span>{{weather?.main?.temp}}</span>
+    <div class="magnitude">
+      <span>°C</span>
+      <span>°F</span>
+      <span>K</span>
+    </div>
+
+    <button>Update</button>
+
+
+  </div>
+
 </div>

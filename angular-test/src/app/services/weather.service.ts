@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http'
+import { environment } from 'src/environments/environment.prod';
+
 
 
 @Injectable({
@@ -8,7 +10,7 @@ import {HttpClient} from '@angular/common/http'
 export class WeatherService {
 
   URI:string='';
-  API_KEY:string='d9d75060deb346d89357f6f9acb6050a';
+  API_KEY:string=environment.API_KEY;
   constructor(private httpClient:HttpClient) {
     this.URI=`https://api.openweathermap.org/data/2.5/weather?&appid=${this.API_KEY}&q=`;
 
