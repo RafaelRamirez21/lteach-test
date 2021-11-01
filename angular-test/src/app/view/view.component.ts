@@ -12,7 +12,13 @@ OnInit {
   cities:any=Object.values(data);
   weather:any=undefined;
   countries:any=(dataC);
-  country:any=undefined
+  country:any=undefined;
+  Math=Math;
+  celsius:any=undefined;
+  kelvin:any=undefined;
+  allCard:any=[];
+
+
 
   constructor(private weatherService:WeatherService) { 
 
@@ -30,7 +36,8 @@ OnInit {
       console.log(res);
       this.weather=res;
       this.getCountry(this.weather?.sys?.country)
-      console.log(this.country)
+      this.allCard.push(this.weather)
+      console.log(this.allCard)
     },
       err=>console.log(err)
     )
@@ -56,6 +63,17 @@ OnInit {
           this.country= this.countries[key];
         }
     })
+  }
+  onUpdate(celsius:any=undefined,fahrenheit:any=undefined,kelvin:any=undefined){
+    console.log(celsius,fahrenheit,kelvin)
+  }
+
+  toCelsius(){
+
+
+  }
+  toKelvin(){
+
   }
 
 }
