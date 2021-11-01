@@ -15,7 +15,9 @@ namespace Test1_CSharp
 
         private static void playTaskThree()
         {
-            throw new NotImplementedException();
+            var taskThree=new TaskThree(5);
+            taskThree.makeMatrix();
+
         }
 
         private static void playTaskTwo()
