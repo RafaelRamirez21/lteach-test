@@ -9,6 +9,7 @@ import * as dataC from '../../assets/countries/countries.json';
 })
 export class ViewComponent implements 
 OnInit {
+  //Variables
   cities:any=Object.values(data);
   weather:any=undefined;
   countries:any=(dataC);
@@ -31,7 +32,7 @@ OnInit {
 
     
   }
-
+  //Methods
   getWeather(cityName:string){
     this.weatherService.getWeather(cityName)
     .subscribe(res=>{
@@ -64,6 +65,7 @@ OnInit {
     Object.keys(this.countries).forEach(key=>{
         if(key==country){
           this.country= this.countries[key];
+
         }
     })
   }
@@ -101,7 +103,7 @@ OnInit {
   onDelete(id:any){
     console.log(id)
     console.log(this.allCard)
-    this.allCard.filter((card:any)=>card.id!==id);
+    this.allCard=this.allCard.filter((card:any)=>card.id!==id);
     console.log(this.allCard)
     this.ngOnInit();
   }
