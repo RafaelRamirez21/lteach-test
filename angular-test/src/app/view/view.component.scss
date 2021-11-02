@@ -146,9 +146,9 @@
 button.grade.gradeK {
   padding-left: 6px;
 }
-button.grade.gradeF {
-  color: #ec553d;
-}
+// button.grade.gradeF {
+//   color: #ec553d;
+// }
 .grade:active,.grade:focus{
   color: #ec553d;
 }
@@ -169,10 +169,11 @@ button.grade.gradeF {
 }
 .bx{
   position: relative;
-  left: 90%;
+  left: 85%;
   top: 3%;
   color: #b3b3b3;
-  font-size: 16px;
+  font-size: 25px;
+  cursor: pointer;
 }
 .form-update{
   width: 100%;

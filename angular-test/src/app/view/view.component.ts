@@ -14,9 +14,11 @@ OnInit {
   countries:any=(dataC);
   country:any=undefined;
   Math=Math;
-  celsius:any=undefined;
-  kelvin:any=undefined;
+  temp:any=undefined;
+  tempbase:any=undefined;
   allCard:any=[];
+  typeTemp:any=undefined;
+  toggle:boolean=true;
 
 
 
@@ -37,6 +39,7 @@ OnInit {
       this.weather=res;
       this.getCountry(this.weather?.sys?.country)
       this.allCard.push(this.weather)
+      this.tempbase=this.weather?.main?.temp;
       console.log(this.allCard)
     },
       err=>console.log(err)
@@ -64,16 +67,43 @@ OnInit {
         }
     })
   }
-  onUpdate(celsius:any=undefined,fahrenheit:any=undefined,kelvin:any=undefined){
-    console.log(celsius,fahrenheit,kelvin)
+
+  onTemp($event:any){
+    $event.preventDefault()
+    this.typeTemp= $event?.target?.value;
+    if (this.typeTemp=='celsius'){
+      this.toCelsius();
+    }else if(this.typeTemp=='kelvin'){
+      this.toKelvin();
+    }else if(this.typeTemp=='fahrenheit'){
+      this.temp=this.tempbase;
+    }
+  }
+
+  onUpdate($event:any,id:any){
+    $event.preventDefault()
+   console.log(id)
+   this.allCard.map((card:any)=>{
+     if (card.id===id) {
+      card.main.temp=this.temp;
+     }
+   })
   }
 
   toCelsius(){
-
+    this.temp=(this.tempbase-32)*5/9;
+ 
 
   }
   toKelvin(){
-
+      this.temp=(this.tempbase+459.67)*5/9;
+  }
+  onDelete(id:any){
+    console.log(id)
+    console.log(this.allCard)
+    this.allCard.filter((card:any)=>card.id!==id);
+    console.log(this.allCard)
+    this.ngOnInit();
   }
 
 }

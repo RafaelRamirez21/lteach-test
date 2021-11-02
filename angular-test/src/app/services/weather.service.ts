@@ -17,6 +17,6 @@ export class WeatherService {
    }
 
    getWeather(city:string){
-    return this.httpClient.get(`${this.URI}${city}`)
+    return this.httpClient.get(`${this.URI}${city}&units=imperial`)
    }
 }
