@@ -33,7 +33,7 @@
             <button #kelvin (click)="onTemp($event,weather.id)" value="kelvin" class="grade gradeK"> K</button>
           </div>
         </div>
-        <div *ngIf="weather.main.temp<=66" class="container-image">
+        <div *ngIf="weather.main.temp<=66 " class="container-image">
           <img class="weather-image" src="../../assets/icons/coldWeather.svg" alt="weather">
           <p>Cold</p>
         </div>
