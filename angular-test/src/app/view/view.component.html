@@ -33,9 +33,17 @@
             <button #kelvin (click)="onTemp($event,weather.id)" value="kelvin" class="grade gradeK"> K</button>
           </div>
         </div>
-        <div class="container-image">
-          <img class="weather-image" src="../../assets/icons/noWeather.svg" alt="weather">
-          <p>{{celsius<=19?'Cold':celsius>19.1 && celsius>26?'warm':'hot'}}</p>
+        <div *ngIf="weather.main.temp<=66" class="container-image">
+          <img class="weather-image" src="../../assets/icons/coldWeather.svg" alt="weather">
+          <p>Cold</p>
+        </div>
+        <div *ngIf="weather.main.temp> 66.38 && weather.main.temp<=78.8" class="container-image">
+          <img class="weather-image" src="../../assets/icons/warmWeather.svg" alt="weather">
+          <p>warm</p>
+        </div>
+        <div *ngIf="weather.main.temp>78" class="container-image">
+          <img class="weather-image" src="../../assets/icons/hotWeather.svg" alt="weather">
+          <p>Hot</p>
         </div>
 
 

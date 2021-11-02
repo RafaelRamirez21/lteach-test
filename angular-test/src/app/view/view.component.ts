@@ -31,18 +31,22 @@ OnInit {
 
 
   ngOnInit(): void { 
+    this.tempfh=this.tempbase;
+    this.toCelsius(this.tempfh);
      
   }
   //Methods
+  //subcription
   getWeather(cityName:string){
     this.weatherService.getWeather(cityName)
     .subscribe(res=>{
       console.log(res);
       this.weather=res;
-      this.getCountry(this.weather?.sys?.country)
+      
       this.allCard.push(this.weather)
       this.tempbase=this.weather?.main?.temp;
       console.log(this.allCard)
+      
     },
       err=>console.log(err)
     )
@@ -52,6 +56,7 @@ OnInit {
    this.getWeather(cityName.value)
     cityName.value="";
     cityName.focus();
+    
    ;
     return false;
 
@@ -101,13 +106,14 @@ OnInit {
 
   toCelsius(tempf:any){
     this.temp=(tempf-32)*5/9;
+    this.celsius=this.temp;
     
   }
   toKelvin(tempf:any){
       this.temp=(tempf+459.67)*5/9;
   }
   onDelete(id:any){
-    console.log(id)
+ 
     console.log(this.allCard)
     this.allCard=this.allCard.filter((card:any)=>card.id!==id);
     console.log(this.allCard)
