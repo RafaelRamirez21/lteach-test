@@ -20,6 +20,8 @@ OnInit {
   allCard:any=[];
   typeTemp:any=undefined;
   toggle:boolean=true;
+  celsius:any=undefined;
+  tempfh:any=undefined;
 
 
 
@@ -29,8 +31,7 @@ OnInit {
 
 
   ngOnInit(): void { 
-
-    
+     
   }
   //Methods
   getWeather(cityName:string){
@@ -51,7 +52,9 @@ OnInit {
    this.getWeather(cityName.value)
     cityName.value="";
     cityName.focus();
+   ;
     return false;
+
   }
   submitDropdown(cityName:string){
 
@@ -70,15 +73,16 @@ OnInit {
     })
   }
 
-  onTemp($event:any){
+  onTemp($event:any,id:any){
     $event.preventDefault()
     this.typeTemp= $event?.target?.value;
+    this.tempfh=this.tempbase;
     if (this.typeTemp=='celsius'){
-      this.toCelsius();
+      this.toCelsius(this.tempfh);
     }else if(this.typeTemp=='kelvin'){
-      this.toKelvin();
+      this.toKelvin(this.tempfh);
     }else if(this.typeTemp=='fahrenheit'){
-      this.temp=this.tempbase;
+      this.temp=this.tempfh;
     }
   }
 
@@ -87,18 +91,20 @@ OnInit {
    console.log(id)
    this.allCard.map((card:any)=>{
      if (card.id===id) {
-      card.main.temp=this.temp;
+       this.tempbase=card.main.temp;
+        card.main.temp=this.temp;
+        
      }
    })
+  
   }
 
-  toCelsius(){
-    this.temp=(this.tempbase-32)*5/9;
- 
-
+  toCelsius(tempf:any){
+    this.temp=(tempf-32)*5/9;
+    
   }
-  toKelvin(){
-      this.temp=(this.tempbase+459.67)*5/9;
+  toKelvin(tempf:any){
+      this.temp=(tempf+459.67)*5/9;
   }
   onDelete(id:any){
     console.log(id)

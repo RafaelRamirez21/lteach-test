@@ -23,16 +23,22 @@
   <div class="container-card__weather_main">
     <div *ngFor="let weather of allCard" class="container-card__weather">
       <i (click)="onDelete(weather.id)" class='bx bx-x'></i>
-      <p>{{weather?.name}}, {{country}}</p>
+      <p>{{weather?.name}}, {{weather.sys.country}}</p>
       <form class="form-update" action="">
         <div class="temperature-display">
           <span class="temperature-digit">{{ Math.round(weather?.main?.temp)}}</span>
           <div class="grades">
-            <button #celius (click)="onTemp($event)" value="celsius" class="grade gradeC">°C</button>
-            <button #fahrenheit (click)="onTemp($event)" value="fahrenheit" class="grade gradeF">°F</button>
-            <button #kelvin (click)="onTemp($event)" value="kelvin" class="grade gradeK"> K</button>
+            <button #celius (click)="onTemp($event,weather.id)" value="celsius" class="grade gradeC">°C</button>
+            <button #fahrenheit (click)="onTemp($event,weather.id)" value="fahrenheit" class="grade gradeF">°F</button>
+            <button #kelvin (click)="onTemp($event,weather.id)" value="kelvin" class="grade gradeK"> K</button>
           </div>
         </div>
+        <div class="container-image">
+          <img class="weather-image" src="../../assets/icons/noWeather.svg" alt="weather">
+          <p>{{celsius<=19?'Cold':celsius>19.1 && celsius>26?'warm':'hot'}}</p>
+        </div>
+
+
         <button (click)="onUpdate($event,weather.id)" class="update-button">Update</button>
 
       </form>

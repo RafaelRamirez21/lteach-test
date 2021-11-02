@@ -187,3 +187,18 @@ button.grade.gradeK {
   flex-wrap: wrap;
   justify-content: space-between;
 }
+.weather-image{
+  width: 13%;
+  margin: 0;
+  display: block;
+}
+.container-image{
+  display: flex;
+  justify-content: center;
+  font-size:22px ;
+  text-transform: capitalize;
+  margin-bottom: 10px;
+  p{
+    margin: 0;
+  }
+}
