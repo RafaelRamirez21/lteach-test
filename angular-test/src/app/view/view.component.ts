@@ -32,7 +32,6 @@ OnInit {
 
   ngOnInit(): void { 
     
-    
      
   }
   //Methods
@@ -121,22 +120,10 @@ OnInit {
   toCelsius(tempf:any){
     this.temp=(tempf-32)*5/9;
     console.log(this.temp,tempf)
-    
   }
-  toFarenheit(tempf:any){
-    if (this.temp===tempf){
-      this.temp=tempf;
-    }
 
-    
-  }
   toKelvin(tempf:any){
- 
-      this.temp=(tempf+459.67)*5/9;
-      
-    
-    
-      
+    this.temp=(tempf+459.67)*5/9;
   }
   onDelete(id:any){
  
