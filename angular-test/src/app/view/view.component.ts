@@ -31,8 +31,8 @@ OnInit {
 
 
   ngOnInit(): void { 
-    this.tempfh=this.tempbase;
-    this.toCelsius(this.tempfh);
+    
+    
      
   }
   //Methods
@@ -43,9 +43,15 @@ OnInit {
       console.log(res);
       this.weather=res;
       
-      this.allCard.push(this.weather)
+      this.weather["main"]["tempbase"]=this.weather?.main?.temp;  
+      this.getCountry(this.weather?.sys?.country);
+      console.log(this.country);
+      this.weather["sys"]["country"]=this.country;
+     
+      this.allCard.push(this.weather);
+      
       this.tempbase=this.weather?.main?.temp;
-      console.log(this.allCard)
+      console.log(this.allCard);
       
     },
       err=>console.log(err)
@@ -71,33 +77,41 @@ OnInit {
 
   getCountry(country:string){
     Object.keys(this.countries).forEach(key=>{
-        if(key==country){
-          this.country= this.countries[key];
+      if(key==country){
+        this.country= this.countries[key];
+        
 
-        }
-    })
+      }
+  })
   }
 
   onTemp($event:any,id:any){
     $event.preventDefault()
     this.typeTemp= $event?.target?.value;
-    this.tempfh=this.tempbase;
+    const card=this.allCard.filter((card: { id: any; })=>card.id===id);
+    const tmp=card[0]?.main?.tempbase;
+    const tempfh=tmp;
+    console.log(tmp)
     if (this.typeTemp=='celsius'){
-      this.toCelsius(this.tempfh);
+      this.toCelsius(tempfh);
     }else if(this.typeTemp=='kelvin'){
-      this.toKelvin(this.tempfh);
+      this.toKelvin(tempfh);
     }else if(this.typeTemp=='fahrenheit'){
-      this.temp=this.tempfh;
+      this.temp=tempfh
+      
     }
   }
 
   onUpdate($event:any,id:any){
     $event.preventDefault()
-   console.log(id)
+
    this.allCard.map((card:any)=>{
      if (card.id===id) {
-       this.tempbase=card.main.temp;
-        card.main.temp=this.temp;
+       this.tempbase=card.main.tempbase;
+       card["main"]["tempbase"]=this.tempbase
+       console.log(card)
+       card.main.temp=this.temp;
+        
         
      }
    })
@@ -106,11 +120,23 @@ OnInit {
 
   toCelsius(tempf:any){
     this.temp=(tempf-32)*5/9;
-    this.celsius=this.temp;
+    console.log(this.temp,tempf)
+    
+  }
+  toFarenheit(tempf:any){
+    if (this.temp===tempf){
+      this.temp=tempf;
+    }
+
     
   }
   toKelvin(tempf:any){
+ 
       this.temp=(tempf+459.67)*5/9;
+      
+    
+    
+      
   }
   onDelete(id:any){
  
