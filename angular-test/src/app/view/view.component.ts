@@ -42,14 +42,15 @@ OnInit {
       console.log(res);
       this.weather=res;
       
+      
       this.weather["main"]["tempbase"]=this.weather?.main?.temp;  
       this.getCountry(this.weather?.sys?.country);
       console.log(this.country);
-      this.weather["sys"]["country"]=this.country;
+      this.weather["sys"]["country"]=this.country;//this.getCountry(this.weather?.sys?.country); return
      
       this.allCard.push(this.weather);
       
-      this.tempbase=this.weather?.main?.temp;
+      // this.tempbase=this.weather?.main?.temp;
       console.log(this.allCard);
       
     },
